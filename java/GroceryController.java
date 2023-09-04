@@ -28,6 +28,24 @@ public class GroceryController {
 	}
 	
 	
+	// dashboard that displays some business logic / product and employee overview, as well
+	// as links to personell and inventory pages
+	@GetMapping("/dashboard")
+	public String dashboard(Model model) {
+		
+		model.addAttribute("manWage", employeeService.avgManagerWage());
+		model.addAttribute("assocWage", employeeService.avgAssociateWage());
+		model.addAttribute("pCount", employeeService.produceEmployeeCount());
+		model.addAttribute("gCount", employeeService.groceryEmployeeCount());
+		model.addAttribute("dCount", employeeService.dairyEmployeeCount());
+		model.addAttribute("invValue", productService.totalInventoryValue());
+		model.addAttribute("prodCost", productService.avgProductCost());
+		model.addAttribute("sellPrice", productService.avgProductSellPrice());
+		
+		return "dashboard";
+		
+		
+	}
 	// employee dashboard
 	@GetMapping("/personnel")
 	public String employeeDash(Model model) {
@@ -112,7 +130,7 @@ public class GroceryController {
 	
 		Product product = new Product();
 		model.addAttribute("product", product);
-		return "add_products";
+		return "add_product";
 	}
 	
 	// bind form data to product, and save
