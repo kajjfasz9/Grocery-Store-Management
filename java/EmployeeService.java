@@ -16,6 +16,20 @@ public interface EmployeeService {
 	Employee updateEmployee(Employee employee);
 	
 	void deleteEmployeeById(Long id);
+	
+	int avgManagerWage();
+	
+	int avgAssociateWage();
+	
+	int produceEmployeeCount();
+	
+	int groceryEmployeeCount();
+	
+	int dairyEmployeeCount();
+	
+	
+	
+
 
 	
 }
