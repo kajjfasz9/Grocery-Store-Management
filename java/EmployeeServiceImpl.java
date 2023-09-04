@@ -51,5 +51,98 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 	}
 
+	@Override
+	public int avgManagerWage() {
+		List<Employee> all = employeeRepository.findAll();
+		int count = 0;
+		int totalWage = 0;
+		for (Employee x: all) {
+			
+			if (x.getPosition().contentEquals("Manager")) {
+				totalWage+= x.getWage();
+				count++;
+			}
+		}
+		
+		
+		int average = totalWage / count;
+		return average;
+	}
+
+	@Override
+	public int avgAssociateWage() {
+		List<Employee> all = employeeRepository.findAll();
+		int count = 0;
+		int totalWage = 0;
+		for (Employee x: all) {
+			
+			if (x.getPosition().contentEquals("Associate")) {
+				totalWage+= x.getWage();
+				count++;
+			}
+		}
+		
+		
+		int average = totalWage / count;
+		return average;
+	}
+
+	@Override
+	public int produceEmployeeCount() {
+		List<Employee> all = employeeRepository.findAll();
+		int count = 0;
+
+		for (Employee x: all) {
+			
+			if (x.getDepartment().contentEquals("Produce")) {
+				
+				count++;
+			}
+		}
+		
+		
+
+		return count;
+	}
+
+	@Override
+	public int groceryEmployeeCount() {
+		List<Employee> all = employeeRepository.findAll();
+		int count = 0;
+
+		for (Employee x: all) {
+			
+			if (x.getDepartment().contentEquals("Grocery")) {
+				
+				count++;
+			}
+		}
+		
+		
+
+		return count;
+	}
+
+	@Override
+	public int dairyEmployeeCount() {
+		List<Employee> all = employeeRepository.findAll();
+		int count = 0;
+
+		for (Employee x: all) {
+			
+			if (x.getDepartment().contentEquals("Dairy")) {
+				
+				count++;
+			}
+		}
+		
+		
+
+		return count;
+	}
+
+
+}
+
 
 }
