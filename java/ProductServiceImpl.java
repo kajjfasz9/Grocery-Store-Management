@@ -48,8 +48,55 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 
+	@Override
+	public int totalInventoryValue() {
+		List<Product> allProducts = productRepository.findAll();
+		int totalValue = 0;
+		
+		for (Product x : allProducts ) {
+			int price = x.getSellingPrice();
+			int quantity = x.getQuantity();
+			int value = price * quantity;
+			
+			totalValue+=value;
+		}
+	
+		return totalValue;
+	}
 
+	@Override
+	public int avgProductCost() {
+		List<Product> allProducts = productRepository.findAll();
+		int totalCost = 0;
+		int count = 0;
+		
+		for (Product x : allProducts ) {
+			int cost = x.getCost();
+			totalCost+=cost;
+			count++;
+			
+		}
+	
+		int average = totalCost / count;
+		return average;
+	}
 
+	@Override
+	public int avgProductSellPrice() {
+		List<Product> allProducts = productRepository.findAll();
+		int totalSell = 0;
+		int count = 0;
+		
+		for (Product x : allProducts ) {
+			int sell = x.getSellingPrice();
+			totalSell+=sell;
+			count++;
+			
+		}
+	
+		int average = totalSell / count;
+		return average;
+	}
 
 
 
